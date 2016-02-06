@@ -1,0 +1,30 @@
+{
+  "name": "AdminLTE",
+  "description": "AdminLTE theme for CakePHP 3",
+  "main": "",
+  "moduleType": [],
+  "keywords": [
+    "cakephp",
+    "AdminLTE"
+  ],
+  "authors": [
+    "Cirici New Media <info@cirici.com>",
+    "Òscar Casajuana <oscar@cirici.com>"
+  ],
+  "license": "GPLv2",
+  "homepage": "https://github.com/ciricihq/AdminLTE",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "webroot/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "AdminLTE": "adminlte#^2.3.2",
+    "bootstrap": "^3.3.6",
+    "fontawesome": "fontawesome#~4.5.0"
+  }
+}

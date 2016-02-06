@@ -1,0 +1,34 @@
+{
+  "name": "AdminLTE",
+  "version": "1.0.0",
+  "description": "AdminLTE theme for CakePHP3",
+  "main": "README.md",
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "~1.7.0",
+    "del": "^2.1.0",
+    "gulp": "^3.9.0",
+    "gulp-bower": "~0.0.13",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.0",
+    "gulp-less-sourcemap": "^1.4.2"
+  },
+  "scripts": {
+    "test": "./vendor/bin/phpunit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ciricihq/AdminLTE.git"
+  },
+  "keywords": [
+    "cakephp",
+    "theme",
+    "AdminLTE"
+  ],
+  "author": "Cirici New Media <info@cirici.com>",
+  "license": "GPLv2",
+  "bugs": {
+    "url": "https://github.com/ciricihq/AdminLTE/issues"
+  },
+  "homepage": "https://github.com/ciricihq/AdminLTE"
+}
