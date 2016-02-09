@@ -105,6 +105,9 @@ class AdminLTERenderer extends GourmetListRenderer
     {
         if (!$item->isRoot() && $item->hasChildren()) {
             $item->setChildrenAttribute('class', 'treeview-menu');
+
+            $item->setExtra('safe_label', true);
+
             $item->setLabel(
                 $item->getLabel() . '<i class="fa fa-angle-left pull-right"></i>'
             );
@@ -121,8 +124,8 @@ class AdminLTERenderer extends GourmetListRenderer
     protected function addRootClass(ItemInterface $item, array &$options)
     {
         $class = $item->getName();
-        if (!empty($options['attributes']['class'])) {
-            $class = $options['attributes']['class'];
+        if ($item->getAttribute('class')) {
+            $class = $item->getAttribute('class');
         }
 
         if ($item->isRoot()) {

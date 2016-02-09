@@ -1,65 +1,80 @@
 <?php
-namespace Cirici\AdminLTE\Test\Renderer;
+namespace Cirici\AdminLTE\Test\TestCase\Renderer;
 
+use Cake\Network\Request;
 use Cake\TestSuite\TestCase;
 use Cirici\AdminLTE\Renderer\AdminLTERenderer;
-use Knp\Menu\ItemInterface;
+use Cirici\AdminLTE\Test\TestCase\ProtectedAccessorTrait;
+use Gourmet\KnpMenu\Menu\MenuFactory;
+use Gourmet\KnpMenu\Menu\MenuItem;
 
+/**
+ * AdminLTERenderer tests
+ *
+ * @author Òscar Casajuana <elboletaire@underave.net>
+ * @coversDefaultClass Cirici\AdminLTE\Renderer\AdminLTERenderer
+ */
 class AdminLTERendererTest extends TestCase
 {
-    protected $request = null;
-    protected $matcher = null;
-    protected $renderer = null;
+    use ProtectedAccessorTrait;
 
+    protected $request = null;
+    protected $renderer = null;
+    protected $menu = null;
+
+    /**
+     * setUp method.
+     *
+     * @coversNothing
+     * @return void
+     */
     public function setUp()
     {
+        parent::setUp();
+
         $this->request = $this->getMock(
             'Cake\Network\Request'
         );
-
-        $this->matcher = $this->getMock(
-            'Gourmet\KnpMenu\Menu\Matcher\Matcher',
-            null,
-            [$this->request]
-        );
-
         $this->renderer = new AdminLTERenderer($this->request);
+        $this->menu = new MenuItem('test', new MenuFactory());
     }
 
+    /**
+     * tearDown method.
+     *
+     * @coversNothing
+     * @return void
+     */
     public function tearDown()
     {
-        unset($this->request, $this->matcher, $this->renderer);
+        parent::tearDown();
+
+        unset($this->request, $this->renderer, $this->menu);
     }
 
-    protected function getProtectedProperty($name)
-    {
-        $class = new \ReflectionClass('Cirici\AdminLTE\Renderer\AdminLTERenderer');
-        $property = $class->getProperty($name);
-        $property->setAccessible(true);
-
-        return $property->getValue($this->renderer);
-    }
-
-    protected function runProtectedMethod($name, array $args = [])
-    {
-        $class = new \ReflectionClass('Cirici\AdminLTE\Renderer\AdminLTERenderer');
-        $method = $class->getMethod($name);
-        $method->setAccessible(true);
-
-        return $method->invokeArgs($this->renderer, $args);
-    }
-
+    /**
+     * Test __construct sets correct defaults.
+     *
+     * @covers ::__construct
+     * @return void
+     */
     public function testConstructSetsDefaults()
     {
         $this->renderer = new AdminLTERenderer($this->request);
 
-        $options = $this->getProtectedProperty('defaultOptions');
+        $options = $this->getProtectedProperty($this->renderer, 'defaultOptions');
 
         $this->assertEquals('active', $options['currentClass']);
         $this->assertEquals('treeview', $options['branch_class']);
         $this->assertTrue($options['allow_safe_labels']);
     }
 
+    /**
+     * Test __construct overwrites defaults.
+     *
+     * @covers ::__construct
+     * @return void
+     */
     public function testConstructOverwritesDefaults()
     {
         $overwrite = [
@@ -70,35 +85,113 @@ class AdminLTERendererTest extends TestCase
 
         $this->renderer = new AdminLTERenderer($this->request, $overwrite);
 
-        $options = $this->getProtectedProperty('defaultOptions');
+        $options = $this->getProtectedProperty($this->renderer, 'defaultOptions');
 
         $this->assertEquals('testcurrent', $options['currentClass']);
         $this->assertEquals('testbranch', $options['branch_class']);
         $this->assertFalse($options['allow_safe_labels']);
     }
 
-    public function testAddIconSkipsIfNoIconDefined()
-    {
-        // $item = $this->getMock(
-        //     'Knp\Menu\ItemInterface',
-        //     null,
-        //     ['test']
-        // );
-        $this->markTestIncomplete('Incomplete');
-    }
-
-    public function testAddIcon()
-    {
-        $this->markTestIncomplete('Incomplete');
-    }
-
-    public function testStyleSublist()
-    {
-        $this->markTestIncomplete('Incomplete');
-    }
-
+    /**
+     * Tests addRootClass.
+     *
+     * @covers ::addRootClass
+     * @covers ::addIcon
+     * @return void
+     */
     public function testAddRootClass()
     {
-        $this->markTestIncomplete('Incomplete');
+        $expected = [
+            'ul' => ['class' => 'test'],
+            'li' => ['class' => 'active first last'],
+            ['span' => true],
+            'About'
+        ];
+
+        $this->menu->addChild('About');
+        $result = $this->renderer->render($this->menu);
+
+        $this->assertHtml($expected, $result);
+    }
+
+    /**
+     * Tests addRootClass allowing custom classes.
+     *
+     * @covers ::addRootClass
+     * @covers ::addIcon
+     * @depends testAddRootClass
+     * @return void
+     */
+    public function testAddRootClassAllowsCustomClass()
+    {
+        $expected = [
+            'ul' => ['class' => 'testing'],
+            'li' => ['class' => 'active first last'],
+            ['span' => true],
+            'About'
+        ];
+
+        $this->menu->setAttribute('class', 'testing');
+
+        $this->menu->addChild('About');
+        $result = $this->renderer->render($this->menu);
+
+        $this->assertHtml($expected, $result);
+    }
+
+    /**
+     * Tests addIcon
+     *
+     * @covers ::addRootClass
+     * @covers ::addIcon
+     * @depends testAddRootClass
+     * @return void
+     */
+    public function testAddIcon()
+    {
+        $expected = [
+            'ul' => ['class' => 'test'],
+            'li' => ['class' => 'active first last'],
+            ['span' => true],
+            'i' => ['class' => 'fa fa-clock'],
+            '/i',
+            'About'
+        ];
+
+        $this->menu->addChild('About', ['attributes' => ['icon' => 'clock']]);
+
+        $result = $this->renderer->render($this->menu);
+        $this->assertHtml($expected, $result);
+    }
+
+    /**
+     *
+     * @covers ::addRootClass
+     * @covers ::addIcon
+     * @covers ::styleSublist
+     * @depends testAddRootClass
+     * @depends testAddIcon
+     * @return void
+     */
+    public function testStyleSublist()
+    {
+        $expected = <<<HTML
+<ul class="test">
+  <li class="active first last treeview">
+    <span>About<i class="fa fa-angle-left pull-right"></i></span>
+    <ul class="treeview-menu menu_level_1">
+      <li class="active first last">
+        <span>foo</span>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+HTML;
+        $this->menu->addChild('About')->addChild('foo');
+
+        $result = $this->renderer->render($this->menu);
+
+        $this->assertEquals($expected, $result, true);
     }
 }
