@@ -97,6 +97,8 @@ class AdminLTERendererTest extends TestCase
      *
      * @covers ::addRootClass
      * @covers ::addIcon
+     * @covers ::render
+     * @covers ::renderItem
      * @return void
      */
     public function testAddRootClass()
@@ -119,6 +121,8 @@ class AdminLTERendererTest extends TestCase
      *
      * @covers ::addRootClass
      * @covers ::addIcon
+     * @covers ::render
+     * @covers ::renderItem
      * @depends testAddRootClass
      * @return void
      */
@@ -144,6 +148,8 @@ class AdminLTERendererTest extends TestCase
      *
      * @covers ::addRootClass
      * @covers ::addIcon
+     * @covers ::render
+     * @covers ::renderItem
      * @depends testAddRootClass
      * @return void
      */
@@ -169,6 +175,8 @@ class AdminLTERendererTest extends TestCase
      * @covers ::addRootClass
      * @covers ::addIcon
      * @covers ::styleSublist
+     * @covers ::render
+     * @covers ::renderItem
      * @depends testAddRootClass
      * @depends testAddIcon
      * @return void
