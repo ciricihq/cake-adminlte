@@ -32,7 +32,7 @@ if (Configure::read('App.author')) {
 $this->prepend('script', $this->Html->script([
     '/AdminLTE/vendor/jquery/dist/jquery.min.js',
     '/AdminLTE/vendor/bootstrap/dist/js/bootstrap.min.js',
-    '/AdminLTE/vendor/adminlte/dist/js/app.min.js'
+    '/AdminLTE/vendor/AdminLTE/dist/js/app.min.js'
 ]));
 
 // Styles
