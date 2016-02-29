@@ -1,6 +1,5 @@
 <?php
 use Cake\Core\Configure;
-use Cirici\AdminLTE\Renderer\AdminLTERenderer;
 
 if (!$this->fetch('html')) {
     $this->start('html');
@@ -259,46 +258,7 @@ $this->prepend('css', $this->Html->css([
                 <!-- /.search form -->
 
                 <!-- Sidebar Menu -->
-                <?php
-                    $menu = $this->Menu->get('sidebar-menu');
-                    $menu->addChild('HEADER', [
-                        'attributes' => ['class' => 'header']
-                    ]);
-                    $menu->addChild('Link', [
-                        'route' => 'dashboard',
-                        'attributes' => [
-                            'icon' => 'link'
-                        ]
-                    ]);
-                    $menu->addChild('Another Link', [
-                        'route' => 'home',
-                        'attributes' => [
-                            'icon' => 'link'
-                        ]
-                    ]);
-                    $multilevel = $menu->addChild('Multilevel', [
-                        'uri' => '#',
-                        'attributes' => [
-                            'icon' => 'link'
-                        ]
-                    ]);
-                    $multilevel->addChild('Link in level 2', [
-                        'uri' => '#',
-                        'attributes' => [
-                            'icon' => 'circle-o'
-                        ]
-                    ]);
-                    $multilevel->addChild('Another link in level 2', [
-                        'uri' => '#',
-                        'attributes' => [
-                            'icon' => 'circle-o'
-                        ]
-                    ]);
-
-                    echo $this->Menu->render('sidebar-menu', [
-                        'renderer'  => new AdminLTERenderer($this->request)
-                    ]);
-                ?>
+                <?= $this->element('AdminLTE.sidebar'); ?>
                 <!-- /.sidebar-menu -->
             </section>
             <!-- /.sidebar -->
