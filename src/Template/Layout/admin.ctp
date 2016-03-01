@@ -182,7 +182,9 @@ $this->prepend('css', $this->Html->css([
                                 <!-- The user image in the navbar-->
                                 <img src="http://placehold.it/160/E8117F/FFFFFF?text=avatar" class="user-image" alt="User Image">
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs"><?= $this->request->session()->read('Auth.User.username') ?></span>
+                                <span class="hidden-xs">
+                                    <?= $this->request->session()->read('Auth.User.username') ?>
+                                </span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
@@ -215,7 +217,9 @@ $this->prepend('css', $this->Html->css([
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="#" class="btn btn-default btn-flat">
+                                            Sign out
+                                        </a>
                                     </div>
                                 </li>
                             </ul>
@@ -239,7 +243,9 @@ $this->prepend('css', $this->Html->css([
                         <img src="http://placehold.it/160/E8117F/FFFFFF?text=avatar" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p>Alexander Pierce</p>
+                        <p>
+                            <?= $this->request->session()->read('Auth.User.username') ?>
+                        </p>
                         <!-- Status -->
                         <!-- <a href="#"><i class="fa fa-circle text-success"></i> Online</a> -->
                     </div>
@@ -280,7 +286,8 @@ $this->prepend('css', $this->Html->css([
 
             <!-- Main content -->
             <section class="content">
-              <?= $this->fetch('content'); ?>
+                <?= $this->Flash->render(); ?>
+                <?= $this->fetch('content'); ?>
             </section>
             <!-- /.content -->
         </section>
@@ -371,39 +378,6 @@ $this->prepend('css', $this->Html->css([
            immediately after the control sidebar -->
       <div class="control-sidebar-bg"></div>
     </div>
-
-<?php
-/*
-    <header role="banner" class="navbar navbar-inverse">
-        <div class="container">
-            <div class="navbar-header">
-                <?php if ($this->fetch('navbar.top')): ?>
-                <button data-target="#navbar-top" data-toggle="collapse" type="button" class="navbar-toggle">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <?php endif; ?>
-                <?= $this->Html->link(Configure::read('App.name'), '/', ['class' => 'navbar-brand']); ?>
-            </div>
-            <?php if ($this->fetch('navbar.top')): ?>
-            <nav role="navigation" class="collapse navbar-collapse" id="navbar-top">
-                <ul class="nav navbar-nav">
-                    <?= $this->fetch('navbar.top'); ?>
-                </ul>
-            </nav>
-            <?php endif; ?>
-        </div>
-    </header>
-    <div class="container">
-        <div id="content" class="row">
-            <?= $this->Flash->render(); ?>
-            <?= $this->fetch('content'); ?>
-        </div>
-    </div>
-    */
-?>
     <?= $this->fetch('script'); ?>
 </body>
 </html>
