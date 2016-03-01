@@ -35,7 +35,8 @@ gulp.task('less.bootstrap', ['bower'], function(){
 gulp.task('less.admin', ['bower'], function () {
   var stream = gulp.src([
       './webroot/vendor/AdminLTE/build/less/AdminLTE.less',
-      './webroot/vendor/AdminLTE/build/less/skins/skin-black.less'
+      './webroot/vendor/AdminLTE/build/less/skins/skin-black.less',
+      './webroot/less/admin.less',
     ])
     .pipe(less({sourceMap: {
         sourceMapRootPath: './AdminLTE/build/less/'
@@ -49,7 +50,8 @@ gulp.task('uglify', ['less'], function() {
   var stream = gulp.src([
     './webroot/css/bootstrap.css',
     './webroot/css/AdminLTE.css',
-    './webroot/css/skin-black.css'
+    './webroot/css/skin-black.css',
+    './webroot/css/admin.css'
   ]).pipe(concat('admin.css'))
     .pipe(gulp.dest('./webroot/css'))
     // .pipe(rename('admin.min.css'))
