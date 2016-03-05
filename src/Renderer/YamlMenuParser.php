@@ -42,7 +42,7 @@ class YamlMenuParser
      * @param string   $file The yaml file to be parsed.
      * @param string   $path Path where the yaml is stored. CONFIG by default.
      */
-    public function __construct(MenuItem $menu, $file = null, $path = null)
+    public function __construct(MenuItem $menu, $file = null, $path = CONFIG)
     {
         $this->menu = $menu;
         $this->parser = new Parser();
