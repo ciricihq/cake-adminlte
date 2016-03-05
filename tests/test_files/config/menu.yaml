@@ -1,0 +1,15 @@
+MENU:
+  attributes:
+    class: header
+
+Posts:
+  uri: /admin/posts
+  attributes:
+    icon: file-text-o
+  children:
+    Index:
+      uri: /admin/posts
+      icon: list
+    New:
+      uri: /admin/posts/add
+      icon: plus

@@ -59,12 +59,8 @@ class YamlMenuParser
      * @param  string $path Path where the yaml is stored. CONFIG by default.
      * @return YamlMenuParser
      */
-    public function load($file, $path = null)
+    public function load($file, $path = CONFIG)
     {
-        if (is_null($path)) {
-            $path = CONFIG;
-        }
-
         $this->file = new File($path . $file);
 
         return $this;
