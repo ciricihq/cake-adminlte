@@ -5,7 +5,8 @@
     "require": {
         "php": ">=5.5.9",
         "cakephp/cakephp": "~3.0",
-        "gourmet/knp-menu": "~0.4"
+        "gourmet/knp-menu": "~0.4",
+        "symfony/yaml": "~3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "*"
