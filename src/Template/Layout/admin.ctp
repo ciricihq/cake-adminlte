@@ -1,5 +1,6 @@
 <?php
 use Cake\Core\Configure;
+use Cake\Routing\Router;
 
 if (!$this->fetch('html')) {
     $this->start('html');
@@ -56,9 +57,6 @@ $this->prepend('css', $this->Html->css([
         echo $this->fetch('meta');
 
         echo $this->fetch('css');
-
-        // Sometimes we'll want to send scripts to the top (rarely..)
-        echo $this->fetch('script.top');
     ?>
 </head>
 <body class="hold-transition skin-black sidebar-mini">
@@ -213,11 +211,15 @@ $this->prepend('css', $this->Html->css([
                                 </li>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
+                                <?php
+                                $profile = Configure::read('AdminLTE.links.profile');
+                                if ($profile): ?>
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        <?= $this->Html->link(__('Profile'), $profile, ['class' => 'btn btn-default btn-flat']); ?>
                                     </div>
+                                <?php endif ?>
                                     <div class="pull-right">
-                                        <?= $this->Html->link(__('Sign out'), ['_name' => 'logout'], ['class' => 'btn btn-default btn-flat']) ?>
+                                        <?= $this->Html->link(__('Sign out'), Configure::read('AdminLTE.links.logout'), ['class' => 'btn btn-default btn-flat']) ?>
                                     </div>
                                 </li>
                             </ul>
