@@ -26,6 +26,7 @@
     "AdminLTE": "adminlte#^2.3.2",
     "bootstrap": "^3.3.6",
     "fontawesome": "fontawesome#~4.5.0",
-    "ionicons": "ionicons#^2.0.1"
+    "ionicons": "ionicons#^2.0.1",
+    "icheck": "iCheck#^1.0.2"
   }
 }

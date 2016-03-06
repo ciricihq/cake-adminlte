@@ -7,7 +7,11 @@ Plugin::load('Gourmet/KnpMenu');
 Configure::write('AdminLTE', [
     'links' => [
         'logout' => null,
-        'profile' => false
+        'profile' => false,
+        'forgot' => false
+    ],
+    'texts' => [
+        'forgot' => 'I forgot my password'
     ]
 ]);
 
