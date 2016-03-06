@@ -88,7 +88,7 @@ class YamlMenuParser
      * @param string $name       Name of the menu child to be added.
      * @param array  $properties Properties of the menu item.
      */
-    protected function addChild($name, $properties)
+    protected function addChild($name, array $properties = [])
     {
         if (!empty($properties['children'])) {
             $children = $properties['children'];
