@@ -217,9 +217,7 @@ $this->prepend('css', $this->Html->css([
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">
-                                            Sign out
-                                        </a>
+                                        <?= $this->Html->link(__('Sign out'), ['_name' => 'logout'], ['class' => 'btn btn-default btn-flat']) ?>
                                     </div>
                                 </li>
                             </ul>
