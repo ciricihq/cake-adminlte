@@ -33,11 +33,11 @@ $this->Html->scriptBlock($script, ['block' => true])
         </div>
         <div class="row">
             <div class="col-xs-8">
-                <div class="checkbox icheck">
+                <!-- <div class="checkbox icheck">
                     <label>
                         <input type="checkbox"> Remember Me
                     </label>
-                </div>
+                </div> -->
             </div>
           <!-- /.col -->
           <div class="col-xs-4">
