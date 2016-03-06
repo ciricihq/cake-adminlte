@@ -69,7 +69,7 @@ class YamlMenuParserTest extends TestCase
     <span>MENU</span>
   </li>
   <li class="last treeview">
-    <a href="/admin/posts"><i class="fa fa-file-text-o"></i>Posts<i class="fa fa-angle-left pull-right"></i></a>
+    <a href="/admin/posts"><i class="fa fa-file-text-o"></i><span>Posts</span><i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu menu_level_1">
       <li class="first">
         <a href="/admin/posts">Index</a>

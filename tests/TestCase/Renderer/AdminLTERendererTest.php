@@ -161,6 +161,7 @@ class AdminLTERendererTest extends TestCase
             ['span' => true],
             'i' => ['class' => 'fa fa-clock'],
             '/i',
+            ['span' => true],
             'About'
         ];
 

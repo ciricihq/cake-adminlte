@@ -86,7 +86,11 @@ class AdminLTERenderer extends GourmetListRenderer
         $item->setExtra('safe_label', true);
 
         $item->setLabel(
-            sprintf('<i class="fa fa-%s"></i>' . $item->getLabel(), $attributes['icon'])
+            sprintf(
+                '<i class="fa fa-%s"></i><span>%s</span>',
+                $attributes['icon'],
+                $item->getLabel()
+            )
         );
 
         unset($attributes['icon']);
