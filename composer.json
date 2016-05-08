@@ -1,5 +1,5 @@
 {
-    "name": "ciricihq/AdminLTE",
+    "name": "ciricihq/adminlte",
     "description": "AdminLTE theme for CakePHP",
     "type": "cakephp-plugin",
     "require": {
