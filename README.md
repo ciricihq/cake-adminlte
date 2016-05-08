@@ -3,7 +3,7 @@ AdminLTE theme for CakePHP 3
 
 [![Build status](https://img.shields.io/travis/ciricihq/cake-adminlte/master.svg?style=flat-square)](https://travis-ci.org/ciricihq/cake-adminlte)
 [![Code coverage](https://img.shields.io/codecov/c/github/ciricihq/cake-adminlte/master.svg?style=flat-square)](https://codecov.io/gh/ciricihq/cake-adminlte)
-[![License](https://img.shields.io/packagist/l/ciricihq/adminlte.svg?style=flat-square)](https://github.com/ciricihq/cake-adminlte/blob/master/LICENSE.md)
+[![License](https://img.shields.io/github/license/ciricihq/cake-adminlte.svg?style=flat-square)](https://github.com/ciricihq/cake-adminlte/blob/master/LICENSE.md)
 [![Latest stable version](https://img.shields.io/github/release/ciricihq/cake-adminlte.svg?style=flat-square)](https://github.com/ciricihq/cake-adminlte/releases)
 [![Total downloads](https://img.shields.io/packagist/dt/ciricihq/adminlte.svg?style=flat-square)](https://packagist.org/packages/ciricihq/adminlte)
 [![Code climate](https://img.shields.io/codeclimate/github/ciricihq/cake-adminlte.svg?style=flat-square)](https://codecov.io/gh/ciricihq/cake-adminlte)
