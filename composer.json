@@ -1,6 +1,7 @@
 {
     "name": "ciricihq/adminlte",
     "description": "AdminLTE theme for CakePHP",
+    "license": "GPL-3.0",
     "type": "cakephp-plugin",
     "require": {
         "php": ">=5.5.9",
