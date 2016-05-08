@@ -72,7 +72,7 @@ class AdminLTERenderer extends GourmetListRenderer
      * `<i class="fa fa-%s">` where `%s` is the defined icon.
      *
      * @param  ItemInterface $item     The menu item.
-     * @param  array         &$options Options passed to the menu.
+     * @param  array         $options Options passed to the menu.
      * @return void
      */
     protected function addIcon(ItemInterface $item, array &$options)
@@ -102,7 +102,7 @@ class AdminLTERenderer extends GourmetListRenderer
      * the unfold arrow icon.
      *
      * @param  ItemInterface $item     The menu item.
-     * @param  array         &$options The menu options.
+     * @param  array         $options The menu options.
      * @return void
      */
     protected function styleSublist(ItemInterface $item, array &$options)
@@ -122,7 +122,7 @@ class AdminLTERenderer extends GourmetListRenderer
      * Adds the menu name as the root list class.
      *
      * @param ItemInterface $item     The item interface.
-     * @param array         &$options Options passed to render.
+     * @param array         $options Options passed to render.
      * @return void
      */
     protected function addRootClass(ItemInterface $item, array &$options)

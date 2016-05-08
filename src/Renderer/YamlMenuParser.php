@@ -41,6 +41,7 @@ class YamlMenuParser
      * @param MenuItem $menu The MenuItem instance.
      * @param string   $file The yaml file to be parsed.
      * @param string   $path Path where the yaml is stored. CONFIG by default.
+     * @return void
      */
     public function __construct(MenuItem $menu, $file = null, $path = CONFIG)
     {
@@ -87,6 +88,7 @@ class YamlMenuParser
      *
      * @param string $name       Name of the menu child to be added.
      * @param array  $properties Properties of the menu item.
+     * @return YamlMenuParser
      */
     protected function addChild($name, array $properties = [])
     {
@@ -99,7 +101,7 @@ class YamlMenuParser
         $this->menu = $this->menu->addChild($name, $properties);
 
         if (isset($children)) {
-            foreach ($children as $childName => $childProperties)  {
+            foreach ($children as $childName => $childProperties) {
                 $this->addChild($childName, $childProperties);
             }
         }

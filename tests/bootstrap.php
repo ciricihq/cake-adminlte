@@ -71,4 +71,4 @@ ConnectionManager::config('test', [
     'quoteIdentifiers' => true
 ]);
 
-Plugin::load('AdminLTE', ['path' => ROOT]);
+Plugin::load('Cirici/AdminLTE', ['path' => ROOT]);
