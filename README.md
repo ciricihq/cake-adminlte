@@ -16,7 +16,7 @@ You can install this plugin into your CakePHP application using [composer](http:
 The recommended way to install composer packages is:
 
 ~~~bash
-composer require ciricihq/AdminLTE
+composer require ciricihq/adminlte
 ~~~
 
 ### Installing dependencies
@@ -37,7 +37,7 @@ First you need to load the plugin. To do so, edit your `bootstrap.php` file and
 add line below:
 
 ~~~php
-Plugin::load('AdminLTE', ['bootstrap' => true]);
+Plugin::load('Cirici/AdminLTE', ['bootstrap' => true]);
 ~~~
 
 After that, you can easily use the AdminLTE template making your controllers
