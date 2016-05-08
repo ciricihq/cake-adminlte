@@ -62,4 +62,13 @@ Cache::config([
     ]
 ]);
 
+if (!getenv('db_dsn')) {
+    putenv('db_dsn=sqlite:///:memory:');
+}
+
+ConnectionManager::config('test', [
+    'url' => getenv('db_dsn'),
+    'quoteIdentifiers' => true
+]);
+
 Plugin::load('AdminLTE', ['path' => ROOT]);
