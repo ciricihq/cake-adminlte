@@ -8,9 +8,9 @@ You can install this plugin into your CakePHP application using [composer](http:
 
 The recommended way to install composer packages is:
 
-```bash
+~~~bash
 composer require ciricihq/AdminLTE
-```
+~~~
 
 ### Installing dependencies
 
@@ -19,9 +19,9 @@ fontawesome or the AdminLTE itself.
 
 To install all the dependencies, just run (within the plugin folder):
 
-```bash
+~~~bash
 npm install && ./node_modules/gulp/bin/gulp.js
-```
+~~~
 
 Configuration
 -------------
@@ -29,21 +29,21 @@ Configuration
 First you need to load the plugin. To do so, edit your `bootstrap.php` file and
 add line below:
 
-```php
+~~~php
 Plugin::load('AdminLTE', ['bootstrap' => true]);
-```
+~~~
 
 After that, you can easily use the AdminLTE template making your controllers
 extend the AdminLTE `AppController`:
 
-```php
+~~~php
 use Cirici\AdminLTE\Controller\AppController as BaseController;
 
 class MyController extends BaseController
 {
 
 }
-```
+~~~
 
 License
 -------
