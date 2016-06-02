@@ -1,13 +1,13 @@
 <?php
-use Cake\Routing\Router;
 use Cake\Routing\RouteBuilder;
+use Cake\Routing\Router;
 
 Router::prefix('admin', function (RouteBuilder $routes) {
     $routes->connect('/', [
         'controller' => 'Admin',
         'action' => 'dashboard',
         'plugin' => false,
-        'admin'  => true
+        'admin' => true
     ]);
 
     $routes->fallbacks('DashedRoute');

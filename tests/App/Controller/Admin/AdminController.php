@@ -12,6 +12,5 @@ class AdminController extends AppController
 {
     public function dashboard()
     {
-
     }
 }

@@ -29,7 +29,7 @@ install:
 script:
 - if [[ $DEFAULT = 1 && $TRAVIS_PHP_VERSION = 7.* ]]; then vendor/bin/phpunit --coverage-clover=clover.xml; fi
 - if [[ $DEFAULT = 1 && $TRAVIS_PHP_VERSION != 7.* ]]; then vendor/bin/phpunit; fi
-- if [ $PHPCS = 1 ]; then vendor/bin/phpcs -p --extensions=php --ignore=tests/bootstrap.php --warning-severity=6 --standard=vendor/ciricihq/cirici-codesniffer/Cirici ./src ./tests; fi
+- if [ $PHPCS = 1 ]; then vendor/bin/phpcs -p --extensions=php --ignore=tests/bootstrap.php --warning-severity=6 --standard=vendor/cakephp/cakephp-codesniffer/CakePHP ./src ./tests; fi
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
