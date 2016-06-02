@@ -1,7 +1,7 @@
 <?php
 use Cake\Core\Configure;
 
-$this->layout = 'AdminLTE.login';
+$this->layout = 'Cirici/AdminLTE.login';
 
 $script = <<<JAVASCRIPT
 jQuery(function ($) {

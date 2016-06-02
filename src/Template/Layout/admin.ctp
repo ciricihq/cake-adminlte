@@ -26,16 +26,16 @@ if (Configure::read('App.author')) {
 
 // Prepend scripts required by the navbar
 $this->prepend('script', $this->Html->script([
-    '/AdminLTE/vendor/jquery/dist/jquery.min.js',
-    '/AdminLTE/vendor/bootstrap/dist/js/bootstrap.min.js',
-    '/AdminLTE/vendor/AdminLTE/dist/js/app.min.js'
+    '/Cirici/AdminLTE/vendor/jquery/dist/jquery.min.js',
+    '/Cirici/AdminLTE/vendor/bootstrap/dist/js/bootstrap.min.js',
+    '/Cirici/AdminLTE/vendor/AdminLTE/dist/js/app.min.js'
 ]));
 
 // Styles
 $this->prepend('css', $this->Html->css([
-    '/AdminLTE/vendor/fontawesome/css/font-awesome.min.css',
-    '/AdminLTE/vendor/ionicons/css/ionicons.min.css',
-    '/AdminLTE/css/admin.css'
+    '/Cirici/AdminLTE/vendor/fontawesome/css/font-awesome.min.css',
+    '/Cirici/AdminLTE/vendor/ionicons/css/ionicons.min.css',
+    '/Cirici/AdminLTE/css/admin.css'
 ]));
 
 ?>
@@ -139,7 +139,7 @@ $this->prepend('css', $this->Html->css([
                 </div>
 
                 <!-- Sidebar Menu -->
-                <?= $this->element('AdminLTE.sidebar'); ?>
+                <?= $this->element('Cirici/AdminLTE.sidebar'); ?>
                 <!-- /.sidebar-menu -->
             </section>
             <!-- /.sidebar -->

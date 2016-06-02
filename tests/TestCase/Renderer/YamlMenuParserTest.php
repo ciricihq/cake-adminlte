@@ -82,8 +82,7 @@ class YamlMenuParserTest extends TestCase
 </ul>
 
 HTML;
-        $path = Plugin::path('Cirici/AdminLTE') . 'tests' . DS . 'test_files' . DS . 'config' . DS;
-        new YamlMenuParser($this->menu, 'menu.yaml', $path);
+        new YamlMenuParser($this->menu, 'menu.yaml', CONFIG);
 
         $this->assertEquals($expected, $this->renderer->render($this->menu));
     }
