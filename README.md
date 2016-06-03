@@ -1,17 +1,17 @@
 AdminLTE theme for CakePHP 3
 ============================
 
-[![Build status](https://img.shields.io/travis/ciricihq/cake-adminlte/master.svg?style=flat-square)](https://travis-ci.org/ciricihq/cake-adminlte)
-[![Code coverage](https://img.shields.io/codecov/c/github/ciricihq/cake-adminlte/master.svg?style=flat-square)](https://codecov.io/gh/ciricihq/cake-adminlte)
-[![License](https://img.shields.io/github/license/ciricihq/cake-adminlte.svg?style=flat-square)](https://github.com/ciricihq/cake-adminlte/blob/master/LICENSE.md)
-[![Latest stable version](https://img.shields.io/github/release/ciricihq/cake-adminlte.svg?style=flat-square)](https://github.com/ciricihq/cake-adminlte/releases)
-[![Total downloads](https://img.shields.io/packagist/dt/ciricihq/adminlte.svg?style=flat-square)](https://packagist.org/packages/ciricihq/adminlte)
-[![Code climate](https://img.shields.io/codeclimate/github/ciricihq/cake-adminlte.svg?style=flat-square)](https://codecov.io/gh/ciricihq/cake-adminlte)
+[![Build status][build svg]][build status]
+[![Code coverage][coverage svg]][coverage]
+[![License][license svg]][license]
+[![Latest stable version][releases svg]][releases]
+[![Total downloads][downloads svg]][downloads]
+[![Code climate][climate svg]][climate]
 
 Installation
 ------------
 
-You can install this plugin into your CakePHP application using [composer](http://getcomposer.org).
+You can install this plugin into your CakePHP application using [composer][composer].
 
 The recommended way to install composer packages is:
 
@@ -21,7 +21,7 @@ composer require ciricihq/adminlte
 
 ### Installing dependencies
 
-Currently this theme uses NPM to install external dependencies such as bootstrap,
+Currently this theme uses [NPM][npm] to install external dependencies such as bootstrap,
 fontawesome or the AdminLTE itself.
 
 To install all the dependencies, just run (within the plugin folder):
@@ -52,6 +52,111 @@ class MyController extends BaseController
 }
 ~~~
 
+Usage
+-----
+
+First of, take a look to the `bootstrap.php` file to see what can you configure
+with `Configure`.
+
+To load your custom configurations you can obviously use `Configure::write` where
+you need, but the recommended way is creating a `adminlte.php` file under your
+`CONFIG` folder (usually `/config`):
+
+~~~php
+<?php
+// /config/adminlte.php
+return [
+    'AdminLTE' => [
+        'texts' => [
+            'logo' => '<b>Awesome</b>Admin'
+        ]
+    ]
+];
+~~~
+
+### Login template
+
+A login template and layout are included too. To use them, simply render the
+login Template from you `login` method:
+
+~~~php
+// some kind of users Controller
+public function logic()
+{
+    // [...]
+    // Your login logic
+
+    $this->render('Cirici/AdminLTE.login');
+}
+~~~
+
+### Menus
+
+This plugin uses [KnpMenu][KnpMenu] for managing its menus and also includes a
+Yaml parser so you can easily create your menus with just three lines of code and
+a yaml file:
+
+~~~php
+use Cake\Event\EventManager;
+use Cirici\AdminLTE\Renderer\YamlMenuParser;
+
+EventManager::instance()->on('AdminLTE.menu.sidebar', function ($event, $menu) {
+    $yaml = new YamlMenuParser($menu, 'admin_menu_sidebar.yaml');
+});
+~~~
+
+With a yaml file like this one:
+
+~~~yaml
+Settings:
+  uri: '#'
+  attributes:
+    icon: gears
+  children:
+    Users:
+      uri: /admin/users
+      attributes:
+        icon: users
+      children:
+        Add user:
+          uri: /admin/users/add
+          attributes:
+            icon: user-plus
+    Roles:
+      uri: /admin/roles
+      attributes:
+        icon: suitcase
+~~~
+
+> Currently there's only the `sidebar` menu bar defined in the template.
+
+Note that there's a special attribute `icon` so you can easily display
+[FontAwesome][FontAwesome] icons on your menu. Just use the icon name
+and the `AdminLTERenderer` will do the rest.
+
+If you're setting menu items using php you would do something like this:
+
+~~~php
+$posts = $menu->addChild('Posts', [
+    'uri' => ['_name' => 'posts.admin.index'],
+    'icon' => 'newspaper-o'
+]);
+$posts->addChild('Add posts', [
+    'uri' => ['_name' => 'posts.admin.add'],
+    'icon' => 'plus'
+]);
+~~~
+
+### Crumbs
+
+Add crumbs using the `HtmlHelper::addCrumb` method:
+
+~~~php
+<?php
+$this->Html->addCrumb('Posts', '/posts');
+$this->Html->addCrumb($yourCurrentPost->title);
+~~~
+
 License
 -------
 
@@ -72,3 +177,22 @@ Created by Òscar Casajuana for Cirici New Media
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+[composer]: https://getcomposer.org
+[npm]: https://nodejs.org
+[KnpMenu]: https://github.com/KnpLabs/KnpMenu
+[FontAwesome]: http://fortawesome.github.io/Font-Awesome/icons/
+
+[build status]: https://travis-ci.org/ciricihq/cake-adminlte
+[coverage]: https://codecov.io/gh/ciricihq/cake-adminlte
+[license]: https://github.com/ciricihq/cake-adminlte/blob/master/LICENSE.md
+[releases]: https://github.com/ciricihq/cake-adminlte/releases
+[downloads]: https://packagist.org/packages/ciricihq/adminlte
+[climate]: https://codeclimate.com/github/ciricihq/cake-adminlte
+
+[build svg]: https://img.shields.io/travis/ciricihq/cake-adminlte/master.svg?style=flat-square
+[coverage svg]: https://img.shields.io/codecov/c/github/ciricihq/cake-adminlte/master.svg?style=flat-square
+[license svg]: https://img.shields.io/github/license/ciricihq/cake-adminlte.svg?style=flat-square
+[releases svg]: https://img.shields.io/github/release/ciricihq/cake-adminlte.svg?style=flat-square
+[downloads svg]: https://img.shields.io/packagist/dt/ciricihq/adminlte.svg?style=flat-square
+[climate svg]: https://img.shields.io/codeclimate/github/ciricihq/cake-adminlte.svg?style=flat-square
