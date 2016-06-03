@@ -8,10 +8,13 @@ Configure::write('AdminLTE', [
     'links' => [
         'logout' => null,
         'profile' => false,
-        'forgot' => false
+        'forgot' => false,
+        'dashboard' => '/admin'
     ],
     'texts' => [
-        'forgot' => 'I forgot my password'
+        'forgot' => 'I forgot my password',
+        'logo-mini' => '<b>A</b>LT',
+        'logo' => '<b>Admin</b>LTE'
     ]
 ]);
 

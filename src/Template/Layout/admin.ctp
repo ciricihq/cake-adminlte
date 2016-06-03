@@ -60,11 +60,11 @@ $this->prepend('css', $this->Html->css([
         <!-- Main Header -->
         <header class="main-header">
             <!-- Logo -->
-            <a href="/admin" class="logo">
+            <a href="<?= Configure::read('AdminLTE.links.dashboard') ?>" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>A</b>M</span>
+                <span class="logo-mini"><?= Configure::read('AdminLTE.texts.logo-mini') ?></span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>Admin</b>Metropolitan</span>
+                <span class="logo-lg"><?= Configure::read('AdminLTE.texts.logo') ?></span>
             </a>
 
             <!-- Header Navbar -->
@@ -153,8 +153,15 @@ $this->prepend('css', $this->Html->css([
                     <?= $this->fetch('title') ?>
                     <!-- <small>Optional description</small> -->
                 </h1>
-                <?php $this->Html->addCrumb('<i class="fa fa-dashboard"></i> Dashboard', '/admin', ['escape' => false]); ?>
-                <?= $this->Html->getCrumbList() ?>
+                <?=
+                    $this->Html->getCrumbList([
+                        'lastClass' => 'active',
+                        'escape' => false
+                    ], [
+                        'text' => '<i class="fa fa-dashboard"></i> Dashboard',
+                        'link' => Configure::read('AdminLTE.links.dashboard')
+                    ]);
+                ?>
             </header>
 
             <!-- Main content -->
