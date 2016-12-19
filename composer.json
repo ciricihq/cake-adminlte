@@ -5,7 +5,7 @@
     "type": "cakephp-plugin",
     "require": {
         "php": ">=5.5.9",
-        "cakephp/cakephp": "~3.2",
+        "cakephp/cakephp": "^3.3.6",
         "gourmet/knp-menu": "~0.4",
         "symfony/yaml": "~3.0"
     },

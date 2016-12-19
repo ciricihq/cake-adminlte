@@ -13,7 +13,8 @@ class AppController extends BaseController
      * @link http://book.cakephp.org/3.0/en/controllers.html#configuring-helpers-to-load
      */
     public $helpers = [
-        'Gourmet/KnpMenu.Menu'
+        'Gourmet/KnpMenu.Menu',
+        'Breadcrumbs'
     ];
 
     /**
