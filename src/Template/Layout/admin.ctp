@@ -153,9 +153,12 @@ $this->prepend('css', $this->Html->css([
                     <?= $this->fetch('title') ?>
                     <!-- <small>Optional description</small> -->
                 </h1>
-                <?php
-                    $this->Breadcrumbs->prepend('<i class="fa fa-dashboard"></i> Dashboard', Configure::read('AdminLTE.links.dashboard'));
-                    echo $this->Breadcrumbs->render(['class' => 'breadcrumb']);
+                <?=
+                    $this->Html->getCrumbList(['class' => 'breadcrumb'], [
+                        'url' => ['_name' => 'dashboard'],
+                        'text' => '<i class="fa fa-dashboard"></i> Dashboard',
+                        'escape' => false
+                    ]);
                 ?>
             </header>
 
