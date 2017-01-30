@@ -40,7 +40,9 @@ class AppController extends BaseController
     {
         parent::beforeRender($event);
 
-        $this->viewBuilder()->layout('Cirici/AdminLTE.admin');
+        if (empty($event->subject()->request->params['_ext'])) {
+            $this->viewBuilder()->layout('Cirici/AdminLTE.admin');
+        }
 
         return null;
     }
