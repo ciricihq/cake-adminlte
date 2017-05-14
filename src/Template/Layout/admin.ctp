@@ -105,11 +105,22 @@ $this->append('css', $this->Html->css([
                                 $profile = Configure::read('AdminLTE.links.profile');
                                 if ($profile): ?>
                                     <div class="pull-left">
-                                        <?= $this->Html->link(__('Profile'), $profile, ['class' => 'btn btn-default btn-flat']); ?>
+                                        <?=
+                                            $this->Html->link(
+                                                __d('AdminLTE', 'Profile'),
+                                                $profile,
+                                                ['class' => 'btn btn-default btn-flat']
+                                            ); ?>
                                     </div>
                                 <?php endif ?>
                                     <div class="pull-right">
-                                        <?= $this->Html->link(__('Sign out'), Configure::read('AdminLTE.links.logout'), ['class' => 'btn btn-default btn-flat']) ?>
+                                        <?=
+                                            $this->Html->link(
+                                                __d('AdminLTE', 'Sign out'),
+                                                Configure::read('AdminLTE.links.logout'),
+                                                ['class' => 'btn btn-default btn-flat']
+                                            );
+                                        ?>
                                     </div>
                                 </li>
                             </ul>
@@ -154,10 +165,17 @@ $this->append('css', $this->Html->css([
             <header class="content-header">
                 <h1>
                     <?= $this->fetch('title') ?>
-                    <!-- <small>Optional description</small> -->
+                    <?php
+                    if ($this->fetch('subtitle')) {
+                        echo $this->Html->tag('small', $this->fetch('subtitle'));
+                    }
+                    ?>
                 </h1>
                 <?php
-                    $this->Breadcrumbs->prepend('<i class="fa fa-dashboard"></i> Dashboard', Configure::read('AdminLTE.links.dashboard'));
+                    $this->Breadcrumbs->prepend(
+                        '<i class="fa fa-dashboard"></i> Dashboard',
+                        Configure::read('AdminLTE.links.dashboard')
+                    );
                     echo $this->Breadcrumbs->render(['class' => 'breadcrumb']);
                 ?>
             </header>
