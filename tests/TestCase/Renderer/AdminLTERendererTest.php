@@ -157,7 +157,7 @@ class AdminLTERendererTest extends TestCase
     {
         $expected = [
             'ul' => ['class' => 'test'],
-            'li' => ['class' => 'first last treeview'],
+            'li' => ['class' => 'active first last treeview'],
 
         ];
 
