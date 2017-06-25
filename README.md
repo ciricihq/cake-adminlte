@@ -157,6 +157,41 @@ $this->Html->addCrumb('Posts', '/posts');
 $this->Html->addCrumb($yourCurrentPost->title);
 ~~~
 
+### View blocks
+
+Many sections of the layout can be managed just defining some view blocks.
+
+For this reason, we recommend creating a custom layout which your views will extend.
+
+Create an `admin.ctp` file wherever you want, add there your custom AdminLTE
+view blocks, and then make your views extend that layout:
+
+~~~php
+<?php
+// src/Templates/admin.ctp
+$this->start('AdminLTE.user.sidebar');
+echo 'Hello ' . $this->Session->read('Auth.User.username') . '!';
+$this->end('AdminLTE.user.small');
+~~~
+
+And then, in your views:
+
+~~~php
+<?php
+$this->extend('/admin');
+~~~
+
+Here are all the currently defined view blocks:
+
+- `subtitle`
+- `AdminLTE.user.small`
+- `AdminLTE.user.detail`
+- `AdminLTE.user.sidebar`
+- `AdminLTE.sidebar.right`
+
+Don't forget to check out the official AdminLTE repository to know how to
+properly define each section.
+
 License
 -------
 

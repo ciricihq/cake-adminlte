@@ -81,29 +81,24 @@ $this->append('css', $this->Html->css([
                     <ul class="nav navbar-nav">
                         <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
+                            <?php if ($this->fetch('AdminLTE.user.small')) : ?>
                             <!-- Menu Toggle Button -->
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <!-- The user image in the navbar-->
-                                <img src="http://placehold.it/160/E8117F/FFFFFF?text=avatar" class="user-image" alt="User Image">
-                                <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                                <span class="hidden-xs">
-                                    <?= $this->request->session()->read('Auth.User.username') ?>
-                                </span>
+                                <?= $this->fetch('AdminLTE.user.small') ?>
                             </a>
+                            <?php endif ?>
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
+                                <?php if ($this->fetch('AdminLTE.user.detail')) : ?>
                                 <li class="user-header">
-                                    <img src="http://placehold.it/160/E8117F/FFFFFF?text=avatar" class="img-circle" alt="User Image">
-
-                                    <p>
-                                        Alexander Pierce - Web Developer
-                                    </p>
+                                    <?= $this->fetch('AdminLTE.user.detail'); ?>
                                 </li>
+                                <?php endif ?>
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                 <?php
                                 $profile = Configure::read('AdminLTE.links.profile');
-                                if ($profile): ?>
+                                if ($profile) : ?>
                                     <div class="pull-left">
                                         <?=
                                             $this->Html->link(
@@ -112,7 +107,9 @@ $this->append('css', $this->Html->css([
                                                 ['class' => 'btn btn-default btn-flat']
                                             ); ?>
                                     </div>
-                                <?php endif ?>
+                                <?php
+                                endif;
+                                ?>
                                     <div class="pull-right">
                                         <?=
                                             $this->Html->link(
@@ -126,9 +123,11 @@ $this->append('css', $this->Html->css([
                             </ul>
                         </li>
                         <!-- Control Sidebar Toggle Button -->
+                        <?php if ($this->fetch('AdminLTE.sidebar.right')) : ?>
                         <li>
                             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                         </li>
+                        <?php endif ?>
                     </ul>
                 </div>
             </nav>
@@ -137,20 +136,12 @@ $this->append('css', $this->Html->css([
         <aside class="main-sidebar">
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
-
+                <?php if ($this->fetch('AdminLTE.user.sidebar')) : ?>
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="http://placehold.it/160/E8117F/FFFFFF?text=avatar" class="img-circle" alt="User Image">
-                    </div>
-                    <div class="pull-left info">
-                        <p>
-                            <?= $this->request->session()->read('Auth.User.username') ?>
-                        </p>
-                        <!-- Status -->
-                        <!-- <a href="#"><i class="fa fa-circle text-success"></i> Online</a> -->
-                    </div>
+                    <?= $this->fetch('AdminLTE.user.sidebar'); ?>
                 </div>
+                <?php endif ?>
 
                 <!-- Sidebar Menu -->
                 <?= $this->element('Cirici/AdminLTE.sidebar'); ?>
@@ -203,76 +194,15 @@ $this->append('css', $this->Html->css([
         </footer>
 
         <!-- Control Sidebar -->
+        <?php if ($this->fetch('AdminLTE.sidebar.right')) : ?>
         <aside class="control-sidebar control-sidebar-dark">
-            <!-- Create the tabs -->
-            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-                <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-                <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-            </ul>
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <!-- Home tab content -->
-                <div class="tab-pane active" id="control-sidebar-home-tab">
-                    <h3 class="control-sidebar-heading">Recent Activity</h3>
-                    <ul class="control-sidebar-menu">
-                        <li>
-                            <a href="javascript::;">
-                                <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-                                <div class="menu-info">
-                                    <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-                                    <p>Will be 23 on April 24th</p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.control-sidebar-menu -->
-
-                    <h3 class="control-sidebar-heading">Tasks Progress</h3>
-                    <ul class="control-sidebar-menu">
-                        <li>
-                            <a href="javascript::;">
-                                <h4 class="control-sidebar-subheading">
-                                    Custom Template Design
-                                    <span class="label label-danger pull-right">70%</span>
-                                </h4>
-
-                                <div class="progress progress-xxs">
-                                    <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.control-sidebar-menu -->
-                </div>
-                <!-- /.tab-pane -->
-                <!-- Stats tab content -->
-                <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-                <!-- /.tab-pane -->
-                <!-- Settings tab content -->
-                <div class="tab-pane" id="control-sidebar-settings-tab">
-                    <form method="post">
-                        <h3 class="control-sidebar-heading">General Settings</h3>
-
-                        <div class="form-group">
-                            <label class="control-sidebar-subheading">
-                                Report panel usage
-                                <input type="checkbox" class="pull-right" checked>
-                            </label>
-
-                            <p>
-                                Some information about this general settings option
-                            </p>
-                        </div>
-                        <!-- /.form-group -->
-                    </form>
-                </div>
-                <!-- /.tab-pane -->
-            </div>
-      </aside>
-      <!-- /.control-sidebar -->
-      <!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
-      <div class="control-sidebar-bg"></div>
+            <?= $this->fetch('AdminLTE.sidebar.right'); ?>
+        </aside>
+        <!-- /.control-sidebar -->
+        <!-- Add the sidebar's background. This div must be placed
+        immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+        <?php endif ?>
     </div>
     <?= $this->fetch('script'); ?>
 </body>
