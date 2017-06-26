@@ -155,19 +155,33 @@ class AdminLTERendererTest extends TestCase
      */
     public function testRenderItem()
     {
-        $expected = [
-            'ul' => ['class' => 'test'],
-            'li' => ['class' => 'active first last treeview'],
+        $expected = <<<HTML
+<ul class="test">
+  <li class="active first last treeview">
+    <span><i class="fa fa-clock"></i><span>About</span><i class="fa fa-angle-left pull-right"></i></span>
+    <ul class="treeview-menu menu_level_1">
+      <li class="active first last treeview">
+        <span><i class="fa fa-clock"></i><span>son</span><i class="fa fa-angle-left pull-right"></i></span>
+        <ul class="treeview-menu menu_level_2">
+          <li class="active first last">
+            <span><i class="fa fa-clock"></i><span>secondson</span></span>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
-        ];
+HTML;
 
         $parent = $this->menu->addChild('About', ['attributes' => ['icon' => 'clock']]);
-        $child = $parent->addChild('son');
-        $child->addChild('secondson');
-        $child->setCurrent(true);
+        $child = $parent->addChild('son', ['attributes' => ['icon' => 'clock']]);
+        $son = $child->addChild('secondson', ['attributes' => ['icon' => 'clock']]);
+
+        $son->setCurrent(true);
 
         $result = $this->renderer->render($this->menu);
-        $this->assertHtml($expected, $result);
+        $this->assertEquals($expected, $result);
     }
 
     /**
