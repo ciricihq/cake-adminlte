@@ -162,12 +162,11 @@ class AdminLTERendererTest extends TestCase
         ];
 
         $parent = $this->menu->addChild('About', ['attributes' => ['icon' => 'clock']]);
-        $child = $parent->addChild('fill');
-        $child->addChild('fill2');
+        $child = $parent->addChild('son');
+        $child->addChild('secondson');
         $child->setCurrent(true);
 
         $result = $this->renderer->render($this->menu);
-        debug($result);
         $this->assertHtml($expected, $result);
     }
 

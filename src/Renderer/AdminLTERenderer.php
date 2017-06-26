@@ -62,6 +62,10 @@ class AdminLTERenderer extends GourmetListRenderer
         $this->addIcon($item, $options);
         $this->styleSublist($item, $options);
 
+        if ($this->matcher->isAncestor($item, $options['matchingDepth'])) {
+            $options['ancestorClass'] = 'current_ancestor active';
+        }
+
         return parent::renderItem($item, $options);
     }
 
