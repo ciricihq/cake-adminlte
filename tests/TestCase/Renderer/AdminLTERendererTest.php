@@ -32,9 +32,9 @@ class AdminLTERendererTest extends TestCase
     {
         parent::setUp();
 
-        $this->request = $this->getMock(
+        $this->request = $this->getMockBuilder(
             'Cake\Network\Request'
-        );
+        )->getMock();
         $this->renderer = new AdminLTERenderer($this->request);
         $this->menu = new MenuItem('test', new MenuFactory());
     }
@@ -141,6 +141,46 @@ class AdminLTERendererTest extends TestCase
         $result = $this->renderer->render($this->menu);
 
         $this->assertHtml($expected, $result);
+    }
+
+    /**
+     * Tests renderItem
+     *
+     * @covers ::addRootClass
+     * @covers ::renderItem
+     * @covers ::render
+     * @depends testAddRootClass
+     * @return void
+     */
+    public function testRenderItem()
+    {
+        $expected = <<<HTML
+<ul class="test">
+  <li class="active first last treeview">
+    <span><i class="fa fa-clock"></i><span>About</span><i class="fa fa-angle-left pull-right"></i></span>
+    <ul class="treeview-menu menu_level_1">
+      <li class="active first last treeview">
+        <span><i class="fa fa-clock"></i><span>son</span><i class="fa fa-angle-left pull-right"></i></span>
+        <ul class="treeview-menu menu_level_2">
+          <li class="active first last">
+            <span><i class="fa fa-clock"></i><span>secondson</span></span>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+HTML;
+
+        $parent = $this->menu->addChild('About', ['attributes' => ['icon' => 'clock']]);
+        $child = $parent->addChild('son', ['attributes' => ['icon' => 'clock']]);
+        $son = $child->addChild('secondson', ['attributes' => ['icon' => 'clock']]);
+
+        $son->setCurrent(true);
+
+        $result = $this->renderer->render($this->menu);
+        $this->assertEquals($expected, $result);
     }
 
     /**
