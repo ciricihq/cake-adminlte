@@ -149,7 +149,6 @@ class AdminLTERendererTest extends TestCase
      * @covers ::addRootClass
      * @covers ::renderItem
      * @covers ::render
-     * @covers ::testAddIcon
      * @depends testAddRootClass
      * @return void
      */
