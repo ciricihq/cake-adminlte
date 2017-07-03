@@ -35,10 +35,7 @@ $this->prepend('script', $this->Html->script([
 $this->prepend('css', $this->Html->css([
     '/Cirici/AdminLTE/vendor/fontawesome/css/font-awesome.min.css',
     '/Cirici/AdminLTE/vendor/ionicons/css/ionicons.min.css',
-]));
-
-$this->append('css', $this->Html->css([
-    '/Cirici/AdminLTE/css/admin.css'
+    '/Cirici/AdminLTE/css/admin.css',
 ]));
 
 ?>
