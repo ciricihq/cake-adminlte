@@ -149,12 +149,12 @@ $posts->addChild('Add posts', [
 
 ### Crumbs
 
-Add crumbs using the `HtmlHelper::addCrumb` method:
+Add crumbs using the `BreadcrumbsHelper::add` method:
 
 ~~~php
 <?php
-$this->Html->addCrumb('Posts', '/posts');
-$this->Html->addCrumb($yourCurrentPost->title);
+$this->Breadcrumbs->add('Posts', '/posts');
+$this->Breadcrumbs->add($yourCurrentPost->title);
 ~~~
 
 ### View blocks
