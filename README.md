@@ -86,7 +86,7 @@ public function logic()
     // [...]
     // Your login logic
 
-    $this->render('Cirici/AdminLTE.login');
+    $this->render('Cirici/AdminLTE./Admin/Users/login');
 }
 ~~~
 
