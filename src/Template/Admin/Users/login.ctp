@@ -11,8 +11,8 @@ jQuery(function ($) {
 });
 JAVASCRIPT;
 
-$this->Html->script('/AdminLTE/vendor/icheck/icheck.min', ['block' => true]);
-$this->Html->css('/AdminLTE/vendor/icheck/skins/square/blue', ['block' => true]);
+$this->Html->script('/Cirici/AdminLTE/vendor/icheck/icheck.min', ['block' => true]);
+$this->Html->css('/Cirici/AdminLTE/vendor/icheck/skins/square/blue', ['block' => true]);
 $this->Html->scriptBlock($script, ['block' => true])
 ?>
 
@@ -44,11 +44,13 @@ $this->Html->scriptBlock($script, ['block' => true])
         </div>
         <div class="row">
             <div class="col-xs-8">
-                <!-- <div class="checkbox icheck">
+                <?php if (Configure::read('AdminLTE.texts.remember')) : ?>
+                <div class="checkbox icheck">
                     <label>
-                        <input type="checkbox"> Remember Me
+                        <input type="checkbox" name="remember_me"> <?= Configure::read('AdminLTE.texts.remember') ?>
                     </label>
-                </div> -->
+                </div>
+                <?php endif ?>
             </div>
             <!-- /.col -->
             <div class="col-xs-4">
@@ -56,13 +58,13 @@ $this->Html->scriptBlock($script, ['block' => true])
             </div>
             <!-- /.col -->
         </div>
+        <?php
+        if (Configure::read('AdminLTE.links.forgot')) {
+            echo $this->Html->link(
+                Configure::read('AdminLTE.texts.forgot'),
+                Configure::read('AdminLTE.links.forgot')
+            );
+        }
+        ?>
     <?= $this->Form->end() ?>
-    <?php
-    if (Configure::read('AdminLTE.links.forgot')) {
-        echo $this->Html->link(
-            Configure::read('AdminLTE.texts.forgot'),
-            Configure::read('AdminLTE.links.forgot')
-        );
-    }
-    ?>
 </div>
