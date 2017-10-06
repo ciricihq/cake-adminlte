@@ -23,7 +23,7 @@
     "tests"
   ],
   "dependencies": {
-    "AdminLTE": "adminlte#^2.3.2",
+    "AdminLTE": "adminlte#2.3.11",
     "bootstrap": "^3.3.6",
     "fontawesome": "fontawesome#^4.5",
     "ionicons": "ionicons#^2.0.1",
