@@ -58,7 +58,7 @@ $this->prepend('css', $this->Html->css([
 <body class="hold-transition skin-black login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="/admin"><b>Admin</b>Metropolitan</a>
+            <?= $this->Html->link(Configure::read('AdminLTE.texts.logo'), Configure::read('AdminLTE.links.dashboard'), ['escape' => false]) ?>
         </div>
         <?= $this->fetch('content'); ?>
     </div>
