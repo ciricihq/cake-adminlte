@@ -47,7 +47,7 @@ $this->Html->scriptBlock($script, ['block' => true])
                 <?php if (Configure::read('AdminLTE.texts.remember')) : ?>
                 <div class="checkbox icheck">
                     <label>
-                        <input type="checkbox" name="remember_me"> <?= Configure::read('AdminLTE.texts.remember') ?>
+                        <input type="checkbox" checked name="remember_me"> <?= Configure::read('AdminLTE.texts.remember') ?>
                     </label>
                 </div>
                 <?php endif ?>
