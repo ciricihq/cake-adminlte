@@ -1,5 +1,6 @@
 <?php
 use Cake\Core\Configure;
+use Cake\Routing\Router;
 
 $this->layout = 'Cirici/AdminLTE.login';
 
@@ -67,4 +68,9 @@ $this->Html->scriptBlock($script, ['block' => true])
         }
         ?>
     <?= $this->Form->end() ?>
+    <?php if (Configure::read('Feature.external_login_methods.microsoft')): ?>
+        <div id="ms365button">
+            <a href="<?= Router::url(['_name' => 'ms.auth']) ?>"><?= __('Sign in with Microsoft') ?></a>
+        </div>
+    <?php endif ?>
 </div>
