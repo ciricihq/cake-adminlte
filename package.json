@@ -20,6 +20,9 @@
     "type": "git",
     "url": "git@github.com:ciricihq/AdminLTE.git"
   },
+  "resolutions": {
+    "graceful-fs": "^4.2.11"
+  },
   "keywords": [
     "cakephp",
     "theme",
